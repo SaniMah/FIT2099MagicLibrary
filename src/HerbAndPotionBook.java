@@ -1,3 +1,6 @@
+import java.util.Collection;
+import java.util.List;
+
 public class HerbAndPotionBook extends MagicBook {
     private int magicPoint;
 
@@ -9,6 +12,16 @@ public class HerbAndPotionBook extends MagicBook {
     @Override
     public String toString() {
         return super.toString() + String.format(", Magic Point: %d", magicPoint);
+    }
+
+    @Override
+    public void read(User user) {
+
+    }
+
+    @Override
+    public Collection<? extends Action> allowableActions() {
+        return List.of();
     }
 }
 
