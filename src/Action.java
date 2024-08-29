@@ -1,9 +1,19 @@
 public abstract class Action {
 
-    // Abstract method to execute the action
+    /**
+     * Executes the action.
+     *
+     * @param user the user on whom the action is performed.
+     * @return a String representing the result of the action.
+     */
     public abstract String execute(User user);
 
-    // Abstract method to describe the action in the menu
+    /**
+     * Provides a description of the action for display in a menu.
+     *
+     * @return a String representing how the action should be shown in a menu.
+     */
     public abstract String menuDescription();
 }
+
 

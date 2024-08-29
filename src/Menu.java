@@ -1,22 +1,24 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 
+    /**
+     * Displays a menu of actions, allowing the user to select one by typing the corresponding letter.
+     *
+     * @param actions A list of Action objects that represent the possible actions the user can take.
+     * @return The Action selected by the user.
+     */
     public static Action showMenu(List<Action> actions) {
         Scanner scanner = new Scanner(System.in);
         List<Character> freeChars = new ArrayList<>();
         Map<Character, Action> keyToActionMap = new HashMap<>();
 
-        // Populate the freeChars list with alphabet characters
+        // Fill the list of freeChars with letters from 'a' to 'z'
         for (char j = 'a'; j <= 'z'; j++) {
             freeChars.add(j);
         }
 
-        // Map each action to a character and display it
+        // Associate each action with a character and map it
         for (Action action : actions) {
             char c = freeChars.get(0);
             freeChars.remove(Character.valueOf(c));
@@ -32,4 +34,3 @@ public class Menu {
         return keyToActionMap.get(key);
     }
 }
-

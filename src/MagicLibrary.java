@@ -3,48 +3,42 @@ import java.util.List;
 
 public class MagicLibrary {
 
-    private List<MagicBook> books;
+    private List<MagicBook> books = new ArrayList<>();
 
-    public MagicLibrary() {
-        createBooks();
+    // Method to create and add books to the library
+    public void createBooks() {
+        books.add(new SpellBook("1", "Charms of Defence and Deterrence", "Catullus Spangle", 10));
+        books.add(new SpellBook("2", "Essential Defence Against the Dark Arts", "Arsenius Jigger", 10));
+        books.add(new HerbAndPotionBook("3", "Goshawk's Guide to Herbology", "Miranda Goshawk", 5));
+        books.add(new HerbAndPotionBook("4", "Magical Drafts and Potions", "Arsenius Jigger", 15));
+        books.add(new DarkArtBook("6", "Magick Moste Evile", "Godelot", 20));
+        books.add(new DarkArtBook("7", "Secrets of the Darkest Art", "Owle Bullock", 30));
     }
 
-    // Method to create and add books to the list
-    private void createBooks() {
-        books = new ArrayList<>();
-        books.add(new SpellBook("1", "Charms of Defence and Deterrence", "Catullus Spangle", 50));
-        books.add(new SpellBook("2", "Essential Defence Against the Dark Arts", "Arsenius Jigger", 60));
-        books.add(new HerbAndPotionBook("3", "Goshawk's Guide to Herbology", "Miranda Goshawk", 40));
-        books.add(new HerbAndPotionBook("4", "Magical Drafts and Potions", "Arsenius Jigger", 45));
-        books.add(new DarkArtBook("7", "Magick Moste Evile", "Godelot", 90));
-        books.add(new DarkArtBook("8", "Secrets of the Darkest Art", "Owle Bullock", 95));
-    }
-
-    // Method to add actions to the menu and execute the selected action
-    public void addActionsToMenu() {
+    // Method to add actions to the menu and allow the user to select an action
+    public void addActionsToMenu(User user) {
         List<Action> actions = new ArrayList<>();
 
+        // Create a ReadAction for each book and add it to the list of actions
         for (MagicBook book : books) {
-            actions.addAll(book.allowableActions());
+            actions.add(new ReadAction(book));
         }
 
-        System.out.println("#############################################");
-        Action action = Menu.showMenu(actions);
-        System.out.println(action.execute(new User()));  // Assuming a new user is passed here
+        System.out.println("###############################################");
+
+        // Use the Menu class to show the menu and return the selected action
+        Action selectedAction = Menu.showMenu(actions);
+
+        // Execute the selected action
+        System.out.println(selectedAction.execute(user));
     }
 
-    // Method to display the list of books
-    public void displayBooks() {
-        for (MagicBook book : books) {
-            System.out.println(book);
-        }
-    }
-
-    // Method to print the status of the library and initiate user interaction
+    // Main method to run the library's functionality
     public void printStatus() {
         System.out.println("Welcome to Hogwarts Library of FIT2099");
-        displayBooks();
-        addActionsToMenu();
+        createBooks(); // Create the books
+        User user = new User(); // Create a new user
+        addActionsToMenu(user); // Add actions to the menu and execute selected action
         System.out.println("Thank you for visiting Hogwarts Library of FIT2099!");
     }
 }
