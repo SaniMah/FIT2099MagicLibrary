@@ -1,4 +1,3 @@
-import java.util.Collection;
 import java.util.List;
 
 public class DarkArtBook extends MagicBook{
@@ -19,8 +18,21 @@ public class DarkArtBook extends MagicBook{
     }
 
     @Override
-    public Collection<? extends Action> allowableActions() {
+    public void borrow(User user) {
+        user.addDarkMagicPoint(this.darkMagicPoint);
+        System.out.println("User has borrowed " + this.getTitle() + " for several days, and has returned it back to Magic Library.");
+    }
+
+
+
+    @Override
+    public List<Action> allowableActions() {
         return List.of();
+    }
+
+    @Override
+    public String speak() {
+        return "";
     }
 
     @Override

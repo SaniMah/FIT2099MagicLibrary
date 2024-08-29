@@ -1,7 +1,6 @@
-import java.util.Collection;
 import java.util.List;
 
-public class HerbAndPotionBook extends MagicBook {
+public class HerbAndPotionBook extends MagicBook implements Borrowable {
     private int magicPoint;
 
     public HerbAndPotionBook(String id, String title, String author, int magicPoint) {
@@ -16,12 +15,24 @@ public class HerbAndPotionBook extends MagicBook {
 
     @Override
     public void read(User user) {
-
+        user.addMagicPoint(this.magicPoint);
+        System.out.println("User has read " + this.getTitle() + " and gained " + this.magicPoint + " magic points.");
     }
 
     @Override
-    public Collection<? extends Action> allowableActions() {
-        return List.of();
+    public void borrow(User user) {
+        user.addMagicPoint(this.magicPoint);
+        System.out.println("User has borrowed " + this.getTitle() + " for several days, and has returned it back to Magic Library.");
+    }
+
+    @Override
+    public List<Action> allowableActions() {
+        // Return the actions that are allowed for this book (reading and borrowing)
+        return List.of(new ReadAction(this), new BorrowAction(this));
+    }
+
+    @Override
+    public String speak() {
+        return "";
     }
 }
-

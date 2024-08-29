@@ -1,6 +1,5 @@
 import java.util.List;
 
-
 public class AncientMagicBook extends MagicBook {
     private final int magicPoint;
     private final Status status;
@@ -25,13 +24,22 @@ public class AncientMagicBook extends MagicBook {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + String.format(", Magic Point: %d", magicPoint);
+    public void borrow(User user) {
+
     }
 
     @Override
     public List<Action> allowableActions() {
-        // Implement or return actions relevant to this book
         return List.of(new ReadAction(this));
+    }
+
+    @Override
+    public String speak() {
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format(", Magic Point: %d", magicPoint);
     }
 }

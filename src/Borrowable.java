@@ -1,5 +1,3 @@
-public class Borrowable {
-    void borrow(User user) {
-
-    }
+public interface Borrowable {
+    void borrow(User user);
 }

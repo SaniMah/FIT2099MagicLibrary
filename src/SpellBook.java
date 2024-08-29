@@ -1,7 +1,6 @@
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
-public class SpellBook extends MagicBook {
+public class SpellBook extends MagicBook implements Borrowable {
     private int magicPoint;
 
     public SpellBook(String id, String title, String author, int magicPoint) {
@@ -16,8 +15,20 @@ public class SpellBook extends MagicBook {
     }
 
     @Override
-    public Collection<? extends Action> allowableActions() {
-        return Collections.emptyList(); // Simplified for example
+    public void borrow(User user) {
+        user.addMagicPoint(magicPoint);
+        System.out.println("User has borrowed " + this.getTitle() + " for several days, and has returned it back to Magic Library.");
+    }
+
+    @Override
+    public List<Action> allowableActions() {
+        // Return the actions that are allowed for this book (reading and borrowing)
+        return List.of(new ReadAction(this), new BorrowAction(this));
+    }
+
+    @Override
+    public String speak() {
+        return "";
     }
 
     @Override

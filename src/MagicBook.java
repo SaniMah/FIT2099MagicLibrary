@@ -1,15 +1,11 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
-public abstract class MagicBook {
+public abstract class MagicBook implements ActionCapable {
 
     private final String id;
     private final String title;
     private final String author;
 
-    // Constructor with ID as String
     public MagicBook(String id, String title, String author) {
         this.id = id;
         this.title = title;
@@ -21,30 +17,12 @@ public abstract class MagicBook {
         return String.format("ID: %s, Title: %s, Author: %s", id, title, author);
     }
 
-    // Abstract method to be implemented by subclasses
+    // Abstract methods to be implemented by subclasses
     public abstract void read(User user);
 
-    public void addActionsToMenu(User user) {
-        while (!user.isComplete()) {
-            List<Action> actions = new ArrayList<>();
-            List<ActionCapable> actionCapables = new ArrayList<>();
+    public abstract void borrow(User user);
 
-            actionCapables.add((ActionCapable) user);
-            actionCapables.add(new LibrarianOne());
-            Collection<? extends ActionCapable> magicBooks = List.of();
-            actionCapables.addAll(magicBooks);  // Assuming magicBooks is a collection of books
-
-            for (ActionCapable actionCapable : actionCapables) {
-                actions.addAll(actionCapable.allowableActions());
-            }
-
-            System.out.println("##############################");
-            Action action = Menu.showMenu(actions);  // No need to wrap actions in Collections.singletonList
-            System.out.println(action.execute(user));
-        }
-    }
-
-    public abstract Collection<? extends Action> allowableActions();
+    public abstract List<Action> allowableActions();
 
     public String getTitle() {
         return title;
@@ -54,7 +32,7 @@ public abstract class MagicBook {
         return author;
     }
 
-    public String getID() {  // Fixed method to return the correct ID
+    public String getID() {
         return id;
     }
 }

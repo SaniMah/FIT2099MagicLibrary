@@ -10,7 +10,7 @@ public class ExitAction extends Action {
 
     @Override
     public String menuDescription() {
-        return "";
+        return "Exit";
     }
 }
 

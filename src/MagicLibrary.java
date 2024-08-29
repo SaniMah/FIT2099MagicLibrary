@@ -17,20 +17,30 @@ public class MagicLibrary {
 
     // Method to add actions to the menu and allow the user to select an action
     public void addActionsToMenu(User user) {
-        List<Action> actions = new ArrayList<>();
+        while (!user.isComplete()) {
+            List<Action> actions = new ArrayList<>();
+            List<ActionCapable> actionCapables = new ArrayList<>();
 
-        // Create a ReadAction for each book and add it to the list of actions
-        for (MagicBook book : books) {
-            actions.add(new ReadAction(book));
+            // Add LibrarianOne and all magicBooks to actionCapables
+            actionCapables.add(new LibrarianOne());
+            actionCapables.addAll(books);
+
+            // Gather all allowable actions from each ActionCapable object
+            for (ActionCapable capable : actionCapables) {
+                actions.addAll(capable.allowableActions());
+            }
+
+            // Add ExitAction separately
+            actions.add(new ExitAction());
+
+            System.out.println("###############################################");
+
+            // Use the Menu class to show the menu and return the selected action
+            Action selectedAction = Menu.showMenu(actions);
+
+            // Execute the selected action
+            System.out.println(selectedAction.execute(user));
         }
-
-        System.out.println("###############################################");
-
-        // Use the Menu class to show the menu and return the selected action
-        Action selectedAction = Menu.showMenu(actions);
-
-        // Execute the selected action
-        System.out.println(selectedAction.execute(user));
     }
 
     // Main method to run the library's functionality
