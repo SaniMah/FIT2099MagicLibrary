@@ -4,7 +4,7 @@ public class SpellBook extends MagicBook implements Borrowable {
     private int magicPoint;
 
     public SpellBook(String id, String title, String author, int magicPoint) {
-        super(id, title, author);
+        super(String.valueOf(Utility.generateRandomInt(200, 300)), title, author);
         this.magicPoint = magicPoint;
     }
 

@@ -9,7 +9,8 @@ import java.util.List;
 
 public class GeminiLibrarian implements ActionCapable {
 
-    private static final String REQUEST_URL = "AIzaSyAHShLwdpAJdx8mgmvBWEOzaFgwDuPK_vk"; // Replace with actual URL
+    private static final String API_KEY = "AIzaSyAHShLwdpAJdx8mgmvBWEOzaFgwDuPK_vk"; // Replace with your actual API key
+    private static final String REQUEST_URL = "https://api.example.com/your-gemini-endpoint"; // Replace with the actual API endpoint URL
 
     /**
      * Makes a call to the Gemini API with the user's prompt and returns the response.
@@ -20,8 +21,9 @@ public class GeminiLibrarian implements ActionCapable {
     private String geminiCall(String prompt) {
         String result;
         try {
-            // Create the URL object
-            URL url = new URL(REQUEST_URL);
+            // Construct the full URL with the API key
+            URL url = new URL(REQUEST_URL + "?key=" + API_KEY);
+
             // Cast URLConnection to HttpURLConnection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 

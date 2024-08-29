@@ -23,6 +23,8 @@ public class MagicLibrary {
 
             // Add LibrarianOne and all magicBooks to actionCapables
             actionCapables.add(new LibrarianOne());
+            actionCapables.add(new LibrarianTwo());
+            actionCapables.add(new GeminiLibrarian());
             actionCapables.addAll(books);
 
             // Gather all allowable actions from each ActionCapable object

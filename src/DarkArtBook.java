@@ -5,7 +5,7 @@ public class DarkArtBook extends MagicBook{
     private Status status;
 
     public DarkArtBook(String id, String title, String author, int darkMagicPoint) {
-        super(id, title, author);
+        super(String.valueOf(Utility.generateRandomInt(300, 400)), title, author);
         this.darkMagicPoint = darkMagicPoint;
         this.status = Status.CURSED;
     }
