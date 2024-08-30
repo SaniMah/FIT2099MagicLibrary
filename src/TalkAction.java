@@ -17,7 +17,7 @@ public class TalkAction extends Action {
         } else if (librarian instanceof LibrarianTwo) {
             return ((LibrarianTwo) librarian).speak();
         } else {
-            return librarian.speak(); // Assuming speak() method is available in all librarians
+            return librarian.speak();
         }
     }
 

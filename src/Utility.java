@@ -17,7 +17,7 @@ public class Utility {
             throw new IllegalArgumentException("Lower bound must be less than or equal to upper bound.");
         }
         int randomInt = random.nextInt((upper - lower) + 1) + lower;
-        return String.valueOf(randomInt);  // Convert the integer to a String before returning
+        return String.valueOf(randomInt);
     }
 }
 

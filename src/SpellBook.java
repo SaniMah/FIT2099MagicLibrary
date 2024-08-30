@@ -22,7 +22,7 @@ public class SpellBook extends MagicBook implements Borrowable {
 
     @Override
     public List<Action> allowableActions() {
-        // Return the actions that are allowed for this book (reading and borrowing)
+
         return List.of(new ReadAction(this), new BorrowAction(this));
     }
 

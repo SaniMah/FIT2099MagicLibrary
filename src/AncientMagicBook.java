@@ -5,7 +5,7 @@ public class AncientMagicBook extends MagicBook {
     private final Status status;
 
     public AncientMagicBook(String author, String title, int magicPoint) {
-        super(Utility.generateRandomInt(1, 100), author, title); // Assuming Utility has the correct generateRandomInt method
+        super(Utility.generateRandomInt(1, 100), author, title);
         this.magicPoint = magicPoint;
         this.status = Status.ANCIENT_WISDOM;
     }

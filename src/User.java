@@ -8,47 +8,47 @@ public class User {
     private int darkMagicPoint;
     private boolean complete;
 
-    // Getter for magicPoint
+
     public int getMagicPoint() {
         return magicPoint;
     }
 
-    // Setter for magicPoint
+
     public void setMagicPoint(int magicPoint) {
         this.magicPoint = magicPoint;
     }
 
-    // Method to add magic points
+
     public void addMagicPoint(int value) {
         this.magicPoint += value;
     }
 
-    // Method to deduct magic points
+
     public void deductMagicPoint(int value) {
         this.magicPoint -= value;
     }
 
-    // Getter for darkMagicPoint
+
     public int getDarkMagicPoint() {
         return darkMagicPoint;
     }
 
-    // Setter for darkMagicPoint
+
     public void setDarkMagicPoint(int darkMagicPoint) {
         this.darkMagicPoint = darkMagicPoint;
     }
 
-    // Method to add dark magic points
+
     public void addDarkMagicPoint(int value) {
         this.darkMagicPoint += value;
     }
 
-    // Method to deduct dark magic points
+
     public void deductDarkMagicPoint(int value) {
         this.darkMagicPoint -= value;
     }
 
-    // Method to reset magic points
+
     public void resetMagicPoint() {
         this.magicPoint = 0;
     }

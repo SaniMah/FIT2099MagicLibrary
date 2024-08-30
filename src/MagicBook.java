@@ -17,7 +17,6 @@ public abstract class MagicBook implements ActionCapable {
         return String.format("ID: %s, Title: %s, Author: %s", id, title, author);
     }
 
-    // Abstract methods to be implemented by subclasses
     public abstract void read(User user);
 
     public abstract void borrow(User user);

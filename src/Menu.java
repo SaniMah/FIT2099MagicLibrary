@@ -2,12 +2,6 @@ import java.util.*;
 
 public class Menu {
 
-    /**
-     * Displays a menu of actions, allowing the user to select one by typing the corresponding letter.
-     *
-     * @param actions A list of Action objects that represent the possible actions the user can take.
-     * @return The Action selected by the user.
-     */
     public static Action showMenu(List<Action> actions) {
         Scanner scanner = new Scanner(System.in);
         List<Character> freeChars = new ArrayList<>();

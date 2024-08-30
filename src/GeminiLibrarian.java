@@ -12,41 +12,36 @@ public class GeminiLibrarian implements ActionCapable {
     private static final String API_KEY = "AIzaSyAHShLwdpAJdx8mgmvBWEOzaFgwDuPK_vk"; // Replace with your actual API key
     private static final String REQUEST_URL = "https://api.example.com/your-gemini-endpoint"; // Replace with the actual API endpoint URL
 
-    /**
-     * Makes a call to the Gemini API with the user's prompt and returns the response.
-     *
-     * @param prompt The user's prompt to be sent to the Gemini API.
-     * @return The response from the Gemini API or an error message if the API is unavailable.
-     */
+
     private String geminiCall(String prompt) {
         String result;
         try {
-            // Construct the full URL with the API key
+
             URL url = new URL(REQUEST_URL + "?key=" + API_KEY);
 
-            // Cast URLConnection to HttpURLConnection
+
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            // Set request method to POST
+
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
             connection.setRequestProperty("Accept", "application/json");
             connection.setDoOutput(true);
 
-            // Create JSON payload
+
             String jsonInputString = "{\"contents\": [{\"parts\": [{\"text\": \"" + prompt + "\"}]}]}";
 
-            // Send JSON input
+
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
 
-            // Get the response code
+
             int code = connection.getResponseCode();
             System.out.println("Response Code: " + code);
 
-            // Read the response
+
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
                 String responseLine;
@@ -66,12 +61,7 @@ public class GeminiLibrarian implements ActionCapable {
         return result;
     }
 
-    /**
-     * The speak method that prompts the user for input and returns a response from the Gemini API.
-     *
-     * @param prompt The user's prompt to be sent to the Gemini API.
-     * @return The response from the Gemini API.
-     */
+
     public String speak(String prompt) {
         return geminiCall(prompt);
     }
