@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MagicLibrary {
@@ -22,10 +23,10 @@ public class MagicLibrary {
             List<ActionCapable> actionCapables = new ArrayList<>();
 
             // Add LibrarianOne and all magicBooks to actionCapables
-            actionCapables.add(new LibrarianOne());
-            actionCapables.add(new LibrarianTwo());
+            actionCapables.add((ActionCapable) new LibrarianOne());
+            actionCapables.add((ActionCapable) new LibrarianTwo());
             actionCapables.add(new GeminiLibrarian());
-            actionCapables.addAll(books);
+            actionCapables.addAll((Collection<? extends ActionCapable>) books);
 
             // Gather all allowable actions from each ActionCapable object
             for (ActionCapable capable : actionCapables) {

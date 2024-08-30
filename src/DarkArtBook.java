@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class DarkArtBook extends MagicBook{
+public class DarkArtBook extends MagicBook {
     private int darkMagicPoint;
     private Status status;
 
